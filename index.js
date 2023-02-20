@@ -1,8 +1,8 @@
 const express = require("express");
 const cors = require("cors");
-const middleware = require("./middleware");
+const middleware = require("./src/middleware");
 
-const admin = require("../src/config/firebase-config");
+const admin = require("./src/config/firebase-config");
 
 const app = express();
 const port = 5000;
@@ -58,26 +58,6 @@ app.get("/api/user/:idUser", (req, res) => {
       return res.status(500).json({ message: "Internal Server Error" });
     });
 });
-// const email = "rarasstevian@gmail.com";
-// app.get("/api/users/:email", (req, res) => {
-//   const { email } = req.params;
-//   try {
-//     admin
-//       .auth()
-//       .getUserByEmail(email)
-//       .then((userRecord) => {
-//         res.json({
-//           message: "Get user success",
-//           data: userRecord,
-//         });
-//       })
-//       .catch((e) => {
-//         res.status(404).json(e);
-//       });
-//   } catch (error) {
-//     res.status(500).json({ message: "Internal Server Error", error: error });
-//   }
-// });
 
 app.listen(port, () => {
   console.log(`Server is listening on port ${port}`);
